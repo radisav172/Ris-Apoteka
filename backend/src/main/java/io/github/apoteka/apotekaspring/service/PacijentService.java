@@ -1,6 +1,7 @@
 package io.github.apoteka.apotekaspring.service;
 
 import io.github.apoteka.apotekaspring.model.Alergija;
+import io.github.apoteka.apotekaspring.model.AlergijaId;
 import io.github.apoteka.apotekaspring.model.Lek;
 import io.github.apoteka.apotekaspring.model.Pacijent;
 import io.github.apoteka.apotekaspring.model.Prodaja;
