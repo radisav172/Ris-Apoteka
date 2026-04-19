@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgres:16
+    container_name: apoteka_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: apoteka
+      POSTGRES_USER: apoteka_user
+      POSTGRES_PASSWORD: apoteka_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
