@@ -20,7 +20,6 @@ public class Nabavka {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @NotNull
     @ColumnDefault("CURRENT_TIMESTAMP")
     @Column(name = "datum", nullable = false)
     private Instant datum;
