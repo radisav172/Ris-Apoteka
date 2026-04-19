@@ -47,9 +47,10 @@ INSERT INTO alergija (pacijent_id, lek_id) VALUES
 
 -- Korisnici
 INSERT INTO korisnik (ime, prezime, korisnicko_ime, lozinka_hash, rola) VALUES
-('Stefan', 'Stefanović', 'admin', '$2a$10$7QxQpCvKfUFVuIHzuNz5l.K1e5k6X3Y8mN2oP4rS9tU0vW1xZ2aB', 'admin'),
-('Milica', 'Milić', 'milicam', '$2a$10$8RyRqDwLgVGViJzvoOa6m.L2f6l7Y4Z9nO3pQ5sT0uV1wX2yA3bC', 'korisnik'),
-('Dragan', 'Dragić', 'dragand', '$2a$10$9SzSrExMhWHWjKawpPb7n.M3g7m8Z5A0oP4qR6tU1vW2xY3zA4cD', 'korisnik');
+-- lozinke: admin123, korisnik123, korisnik123
+('Stefan', 'Stefanović', 'admin', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2uheWG/igi.', 'admin'),
+('Milica', 'Milić', 'milicam', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2uheWG/igi.', 'korisnik'),
+('Dragan', 'Dragić', 'dragand', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2uheWG/igi.', 'korisnik');
 
 -- Recepti
 INSERT INTO recept (broj_recepta, datum, status, pacijent_id, korisnik_id) VALUES

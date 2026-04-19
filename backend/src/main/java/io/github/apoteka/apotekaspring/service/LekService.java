@@ -5,6 +5,7 @@ import io.github.apoteka.apotekaspring.repository.LekRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
@@ -40,7 +41,11 @@ public class LekService {
 
     public void delete(Integer id) {
         findById(id);
-        repository.deleteById(id);
+        try {
+            repository.deleteById(id);
+        } catch (DataIntegrityViolationException e) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Lek se ne može obrisati jer postoje povezane stavke prodaje ili nabavke");
+        }
     }
 
     public Lek update(Integer id, Lek lek) {
