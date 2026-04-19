@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+              http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="zalihe" pageWidth="595" pageHeight="842"
+              columnWidth="535" leftMargin="30" rightMargin="30"
+              topMargin="30" bottomMargin="30">
+
+    <style name="Default" isDefault="true" fontName="DejaVu Sans" fontSize="9" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H"/>
+    <style name="Bold" fontName="DejaVu Sans" fontSize="9" isBold="true" pdfFontName="DejaVu Sans Bold" pdfEncoding="Identity-H"/>
+    <style name="Title" fontName="DejaVu Sans" fontSize="20" isBold="true" pdfFontName="DejaVu Sans Bold" pdfEncoding="Identity-H"/>
+    <style name="Low" fontName="DejaVu Sans" fontSize="9" forecolor="#CC0000" pdfFontName="DejaVu Sans" pdfEncoding="Identity-H"/>
+
+    <parameter name="datum" class="java.lang.String"/>
+
+    <field name="naziv" class="java.lang.String"/>
+    <field name="sifra" class="java.lang.String"/>
+    <field name="kategorija" class="java.lang.String"/>
+    <field name="kolicinaNaStanju" class="java.lang.Integer"/>
+    <field name="minimalnaZaliha" class="java.lang.Integer"/>
+    <field name="cena" class="java.math.BigDecimal"/>
+    <field name="rokTrajanja" class="java.lang.String"/>
+    <field name="nistaZaliha" class="java.lang.Boolean"/>
+
+    <title>
+        <band height="70">
+            <staticText>
+                <reportElement x="0" y="0" width="535" height="35" style="Title"/>
+                <textElement textAlignment="Center"/>
+                <text><![CDATA[IZVESTAJ O ZALIHAMA]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="0" y="42" width="535" height="16"/>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA["Datum generisanja: " + $P{datum}]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+
+    <columnHeader>
+        <band height="25">
+            <rectangle>
+                <reportElement x="0" y="0" width="535" height="25" backcolor="#DDDDDD" mode="Opaque"/>
+            </rectangle>
+            <staticText>
+                <reportElement x="5" y="4" width="155" height="17" style="Bold"/>
+                <textElement/>
+                <text><![CDATA[Naziv]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="160" y="4" width="100" height="17" style="Bold"/>
+                <textElement/>
+                <text><![CDATA[Kategorija]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="260" y="4" width="70" height="17" style="Bold"/>
+                <textElement textAlignment="Center"/>
+                <text><![CDATA[Na stanju]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="330" y="4" width="70" height="17" style="Bold"/>
+                <textElement textAlignment="Center"/>
+                <text><![CDATA[Min. zaliha]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="400" y="4" width="70" height="17" style="Bold"/>
+                <textElement textAlignment="Right"/>
+                <text><![CDATA[Cena (RSD)]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="470" y="4" width="60" height="17" style="Bold"/>
+                <textElement textAlignment="Center"/>
+                <text><![CDATA[Rok]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+
+    <detail>
+        <band height="20">
+            <textField>
+                <reportElement x="5" y="2" width="155" height="16">
+                    <printWhenExpression><![CDATA[!$F{nistaZaliha}]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{naziv}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="5" y="2" width="155" height="16" style="Low">
+                    <printWhenExpression><![CDATA[$F{nistaZaliha}]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{naziv} + " (!)"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="160" y="2" width="100" height="16"/>
+                <textFieldExpression><![CDATA[$F{kategorija} != null ? $F{kategorija} : "-"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="260" y="2" width="70" height="16">
+                    <printWhenExpression><![CDATA[!$F{nistaZaliha}]]></printWhenExpression>
+                </reportElement>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA[$F{kolicinaNaStanju}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="260" y="2" width="70" height="16" style="Low">
+                    <printWhenExpression><![CDATA[$F{nistaZaliha}]]></printWhenExpression>
+                </reportElement>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA[$F{kolicinaNaStanju}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="330" y="2" width="70" height="16"/>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA[$F{minimalnaZaliha}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="400" y="2" width="70" height="16"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression><![CDATA[$F{cena}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="470" y="2" width="60" height="16"/>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA[$F{rokTrajanja}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+
+</jasperReport>
