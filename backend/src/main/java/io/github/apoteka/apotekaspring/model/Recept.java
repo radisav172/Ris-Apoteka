@@ -6,8 +6,10 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.type.SqlTypes;
 
 import java.time.LocalDate;
 
@@ -31,6 +33,7 @@ public class Recept {
     private LocalDate datum;
 
     @Enumerated(EnumType.STRING)
+    @JdbcTypeCode(SqlTypes.NAMED_ENUM)
     @ColumnDefault("'aktivan'")
     @Column(name = "status", columnDefinition = "recept_status", nullable = false)
     private ReceptStatus status = ReceptStatus.aktivan;

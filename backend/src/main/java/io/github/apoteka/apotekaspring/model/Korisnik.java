@@ -6,6 +6,8 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 @Getter
 @Setter
@@ -38,6 +40,7 @@ public class Korisnik {
     private String lozinkaHash;
 
     @Enumerated(EnumType.STRING)
+    @JdbcTypeCode(SqlTypes.NAMED_ENUM)
     @ColumnDefault("'korisnik'")
     @Column(name = "rola", columnDefinition = "rola_tip", nullable = false)
     private RolaTip rola = RolaTip.korisnik;
