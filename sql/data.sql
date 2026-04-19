@@ -87,3 +87,8 @@ INSERT INTO stavkanabavke (kolicina, nabavna_cena, nabavka_id, lek_id) VALUES
 (100, 220.00, 2, 4),
 (50,  950.00, 2, 5),
 (300, 190.00, 3, 6);
+
+INSERT INTO Dobavljac (naziv, adresa, kontakt, pib) VALUES
+('Hemofarm d.o.o.',  'Vršac, Beogradski put bb', '013/800-100', '123456789'),
+('Galenika a.d.',    'Zemun, Batajnički drum 2', '011/307-5000', '987654321'),
+('Bayer d.o.o.',     'Beograd, Omladinskih brigada 88', '011/220-0100', '111222333');
