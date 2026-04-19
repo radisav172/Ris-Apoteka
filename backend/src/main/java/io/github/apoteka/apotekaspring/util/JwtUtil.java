@@ -32,11 +32,18 @@ public class JwtUtil {
     }
 
     public String extractKorisnickoIme(String token) {
+        return getClaims(token).getSubject();
+    }
+
+    public String extractRola(String token) {
+        return getClaims(token).get("rola", String.class);
+    }
+
+    private io.jsonwebtoken.Claims getClaims(String token) {
         return Jwts.parser()
                 .verifyWith(key)
                 .build()
                 .parseSignedClaims(token)
-                .getPayload()
-                .getSubject();
+                .getPayload();
     }
 }
