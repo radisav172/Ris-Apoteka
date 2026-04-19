@@ -27,3 +27,12 @@ services:
     depends_on:
       db:
         condition: service_healthy
+
+  frontend:
+    build: ./frontend
+    container_name: apoteka_frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - app
